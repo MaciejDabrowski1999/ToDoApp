@@ -22,6 +22,9 @@ const addNewTodos = () => {
     if (toDoInput.value !== '') {
         newTodos = document.createElement('li');
         newTodos.textContent = toDoInput.value
+
+        createToolsArea()
+
         ulList.append(newTodos);
         toDoInput.value = ''
         errorInfo.textContent = ''
@@ -29,6 +32,26 @@ const addNewTodos = () => {
         errorInfo.textContent = 'Wpisz treść zadania!'
     }
 }
+//Funkcja tworząca przyciski
+const createToolsArea = () => {
 
+    const divTools = document.createElement('div')
+    divTools.classList.add('tools')
+    newTodos.append(divTools)
+
+    const completeBnt = document.createElement('button')
+    completeBnt.classList.add('complete')
+    completeBnt.innerHTML = '<i class="fas fa-check"></i>'
+
+    const editBnt = document.createElement('button')
+    editBnt.classList.add('edit')
+    editBnt.textContent = 'EDIT'
+
+    const deleteBnt = document.createElement('button')
+    deleteBnt.classList.add('delete')
+    deleteBnt.innerHTML = '<i class="fas fa-times"></i>'
+
+    divTools.append(completeBnt, editBnt, deleteBnt)
+}
 
 document.addEventListener('DOMContentLoaded', main)
