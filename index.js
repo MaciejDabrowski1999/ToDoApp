@@ -2,7 +2,7 @@ let toDoInput //Miejsce gdzie użytkownik wpisuje treść zadania
 let errorInfo //info o braku zadań
 let addBtn //przycisk dodawania elementów
 let ulList //lista zadań
-let newTodos
+// let newTodo
 
 const main = () => {
     prepareDOMElements()
@@ -17,15 +17,15 @@ const prepareDOMElements = () => {
 const prepareDOMEvents = () => {
     addBtn.addEventListener('click', addNewTodos)
 }
-//pbierać informacje => zapisywać info => tworzyć element => w elemencie pobrać informacje => wyświetlić element
+
 const addNewTodos = () => {
     if (toDoInput.value !== '') {
-        newTodos = document.createElement('li');
-        newTodos.textContent = toDoInput.value
+        const newTodo = document.createElement('li');
+        newTodo.textContent = toDoInput.value
 
-        createToolsArea()
+        createToolsArea(newTodo)
 
-        ulList.append(newTodos);
+        ulList.append(newTodo);
         toDoInput.value = ''
         errorInfo.textContent = ''
     } else {
@@ -33,11 +33,11 @@ const addNewTodos = () => {
     }
 }
 //Funkcja tworząca przyciski
-const createToolsArea = () => {
+const createToolsArea = (newTodo) => {
 
     const divTools = document.createElement('div')
     divTools.classList.add('tools')
-    newTodos.append(divTools)
+    newTodo.append(divTools)
 
     const completeBnt = document.createElement('button')
     completeBnt.classList.add('complete')
